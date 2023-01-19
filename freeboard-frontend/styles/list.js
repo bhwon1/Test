@@ -6,6 +6,15 @@ export const Container = styled.div`
   margin : 0 auto ; 
 `
 
+export const TitleWrap= styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`
+export const TitleBox= styled.div`
+  width: 49%;
+`
+
 export const Title= styled.h1`
   font-size : 36px; 
   text-align : center;
@@ -13,15 +22,22 @@ export const Title= styled.h1`
 `
 
 export const Title1 = styled.h2`
-  width : 100% ;
+  width : 100%;
   font-size : 16px; 
   padding : 16px 0;
+  
 `
 
 export const Title1Input = styled.input`
   width : 100%; 
-  height : 46px; 
-  padding : 0 16px; 
+  height : 52px; 
+  padding : 0 16px;
+  box-sizing: border-box;
+  margin : 0;
+`
+export const Error = styled.h2`
+  color : red;
+  font-size : 14px;
 `
 
 export const Content = styled.h2`
@@ -34,6 +50,7 @@ export const ContentInput = styled.textarea`
   width : 100%; 
   height : 480px;  
   padding :  16px; 
+  box-sizing: border-box;
 `
 
 export const Addr = styled.h2`
@@ -49,8 +66,9 @@ export const AddrWrap = styled.div`
 
 export const AddrInputNumber = styled.input`
   width : 77px ;
-  height : 46px; 
+  height : 52px; 
   padding : 0 16px; 
+  box-sizing: border-box;
 `
 export const AddrButton = styled.button`
   width : 124px ;
@@ -65,9 +83,10 @@ export const AddrButton = styled.button`
 
 export const AddrInput = styled.input`
   width : 100%; 
-  height : 46px;  
+  height : 52px;  
   margin : 16px 0 0 0;
   padding : 0 16px; 
+  box-sizing: border-box;
 `
 
 export const RadioInput = styled.input`

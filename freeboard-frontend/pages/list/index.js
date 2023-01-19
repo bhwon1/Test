@@ -1,14 +1,87 @@
+import {useState} from 'react'
+
 import * as S from '../../styles/list';
 
 export default function list(){
+  
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [writer, setWriter] = useState("");
+  const [content, setContent] = useState("");
+
+
+  const [idError, setIdError] = useState("")
+  const [pwError, setPwError] = useState("")
+  const [writerError, setWriterErrorError] = useState("")
+  const [contentError, setContentErrorError] = useState("")
+
+  function onChangeId (e){
+    setId(e.target.value);
+    if(e.target.value !== ""){
+      setIdError("")
+    }
+  }
+  function onChangePw (e){
+    setPw(e.target.value);
+    if(e.target.value !== ""){
+      setPwError("")
+    }
+  }
+  function onChangeWriter (e){
+    setWriter(e.target.value);
+    if(e.target.value !== ""){
+      setWriterErrorError("")
+    }
+  }
+  function onChangeContent (e){
+    setContent(e.target.value);
+    if(e.target.value !== ""){
+      setContentErrorError("")
+    }
+  }
+
+
+  function onClickSubmit(){
+    if(id ===''){
+      setIdError("아이디를 입력해주세요")
+    }
+    if(pw ===''){
+      setPwError("비밀번호를 입력해주세요")
+    }
+    if(writer ===''){
+      setWriterErrorError("작성자를 입력해주세요")
+    }
+    if(content ===''){
+      setContentErrorError("내용을 입력해주세요")
+    }
+    else {
+      alert ("등록되었습니다")
+    }
+    
+  }
+
   return(
     <>
     <S.Container>
       <S.Title>게시물등록</S.Title>
-      <S.Title1>제목</S.Title1>
-      <S.Title1Input type="text" placeholder='제목을 작성해주세요'/>
+      <S.TitleWrap>
+        <S.TitleBox>
+          <S.Title1>아이디</S.Title1>
+          <S.Title1Input type="text" placeholder='제목을 작성해주세요' onChange={onChangeId}/>
+          <S.Error>{idError}</S.Error>
+        </S.TitleBox>
+        <S.TitleBox>
+          <S.Title1>비밀번호</S.Title1>
+          <S.Title1Input type="password" placeholder='비밀번호를 작성해주세요' onChange={onChangePw}/>
+          <S.Error>{pwError}</S.Error>
+        </S.TitleBox>
+      </S.TitleWrap>
+      <S.Title1>작성자</S.Title1>
+      <S.Title1Input type="text" placeholder='제목을 작성해주세요' onChange={onChangeWriter}/>
+      <S.Error>{writerError}</S.Error>
       <S.Content>내용</S.Content>
-      <S.ContentInput type="text" placeholder='내용을 작성해주세요'/>
+      <S.ContentInput type="text" placeholder='내용을 작성해주세요' onChange={onChangeContent}/>
+      <S.Error>{contentError}</S.Error>
       <S.Addr>주소</S.Addr>
       <S.AddrWrap>
         <S.AddrInputNumber placeholder='07250'></S.AddrInputNumber>
@@ -32,7 +105,7 @@ export default function list(){
         <S.RadioLabel htmlFor="image">사진</S.RadioLabel>
       </S.RadioBox>
       <S.Box>
-        <S.CheckBox>등록하기</S.CheckBox>
+        <S.CheckBox onClick={onClickSubmit}>등록하기</S.CheckBox>
       </S.Box>
       
 
