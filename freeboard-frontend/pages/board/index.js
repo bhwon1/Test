@@ -1,14 +1,23 @@
 import {useState} from 'react'
-
 import * as S from '../../styles/board_emotion';
+import { gql, useMutation } from '@apollo/client'
 
-export default function list(){
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!){
+    createBoard(createBoardInput: $createBoardInput){
+      _id
+    }
+  }
+`
+
+export default function board(){
+
+  const [createBoard] = useMutation(CREATE_BOARD)
   
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [writer, setWriter] = useState("");
   const [content, setContent] = useState("");
-
 
   const [idError, setIdError] = useState("")
   const [pwError, setPwError] = useState("")
@@ -41,7 +50,7 @@ export default function list(){
   }
 
 
-  function onClickSubmit(){
+  const onClickSubmit = async()=>{
     if(!id){
       setIdError("아이디를 입력해주세요")
     }
@@ -55,6 +64,16 @@ export default function list(){
       setContentErrorError("내용을 입력해주세요")
     }
     else {
+      const result = await createBoard({
+        variables: {
+          createBoardInput : {
+            writer: id,
+            password: pw,
+            title : writer,
+            contents: content
+          }
+        }
+      })
       // 메시지 알림 이전, backend 컴퓨터에 있는 api(함수) 요청하기
       alert ("등록되었습니다")
     }
