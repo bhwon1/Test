@@ -39,7 +39,7 @@ export default function RouterPage(){
       alert(result.data.createProduct._id)
       alert(result)
 
-      router.push(`/05-02/${result.data.createProduct._id}`)
+      router.push(`/05/${result.data.createProduct._id}`)
 
     }catch(error){
       alert(error.message)
