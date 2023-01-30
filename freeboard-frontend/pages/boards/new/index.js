@@ -1,6 +1,7 @@
 import {useState} from 'react'
-import * as S from '../../styles/board_emotion';
+import * as S from '../../../styles/board_emotion';
 import { gql, useMutation } from '@apollo/client'
+import { useRouter } from 'next/router';
 
 const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!){
@@ -11,6 +12,7 @@ const CREATE_BOARD = gql`
 `
 
 export default function board(){
+  const router = useRouter()
 
   const [createBoard] = useMutation(CREATE_BOARD)
   
@@ -64,7 +66,8 @@ export default function board(){
       setContentErrorError("내용을 입력해주세요")
     }
     else {
-      const result = await createBoard({
+      try{
+        const result = await createBoard({
         variables: {
           createBoardInput : {
             writer: id,
@@ -76,8 +79,13 @@ export default function board(){
       })
       // 메시지 알림 이전, backend 컴퓨터에 있는 api(함수) 요청하기
       alert ("등록되었습니다")
+      alert(result.data.createBoard._id)
+      router.push(`/boards/${result.data.createBoard._id}`)
+      }
+      catch(error){
+        alert(error.message)
+      }
     }
-    
   }
 
   return(
