@@ -23,7 +23,7 @@ export default function BoardWriterUI(props){
             <S.ContentBox></S.ContentBox>
             <S.ContentDetail>{props.data?.fetchBoard?.contents}</S.ContentDetail>
             <S.VideoBox>
-              <S.Video src='../freeboard_img/location.png'></S.Video>
+              <S.Video src='../freeboard_img/video.png'></S.Video>
             </S.VideoBox>
           </S.Contents>
           <S.LikeWrap>
