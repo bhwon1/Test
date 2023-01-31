@@ -1,4 +1,4 @@
-import * as S from './BoardWriter.styled';
+import * as S from './BoardDetail.styled';
 
 export default function BoardWriterUI(props){
 

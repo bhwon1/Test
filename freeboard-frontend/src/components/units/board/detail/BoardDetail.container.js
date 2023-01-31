@@ -1,7 +1,7 @@
-import BoardWriterUI from "./BoardWriter.presenter";
+import BoardWriterUI from "./BoardDetail.presenter";
 import { useQuery } from "@apollo/client";
 import { useRouter } from 'next/router';
-import { FETCH_BOARD } from "./BoardWriter.queries";
+import { FETCH_BOARD } from "./BoardDetail.queries";
 
 
 export default function BoardWriter (){
