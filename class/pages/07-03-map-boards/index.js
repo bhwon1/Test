@@ -14,7 +14,7 @@ const  FETCH_BOARDS = gql`
 const Row = styled.label`
   display: flex;
   font-size: 20px;
-`
+` 
 
 const Column = styled.div`
   width: 25%;
