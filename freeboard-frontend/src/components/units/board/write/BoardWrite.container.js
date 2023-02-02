@@ -8,6 +8,8 @@ import { CREATE_BOARD } from './BaordWrite.mutation';
 
 export default function BoardWrite(){
 
+  const [success, setSuccess] = useState(false)
+
   const router = useRouter()
 
   const [createBoard] = useMutation(CREATE_BOARD)
@@ -27,11 +29,23 @@ export default function BoardWrite(){
     if(e.target.value !== ""){
       setIdError("")
     }
+    if(e.target.value && pw && writer && content ){
+      setSuccess(true)
+    }
+    else {
+      setSuccess(false)
+    }
   }
   function onChangePw (e){
     setPw(e.target.value);
     if(e.target.value !== ""){
       setPwError("")
+    }
+    if(id && e.target.value && writer && content ){
+      setSuccess(true)
+    }
+    else {
+      setSuccess(false)
     }
   }
   function onChangeWriter (e){
@@ -39,16 +53,28 @@ export default function BoardWrite(){
     if(e.target.value !== ""){
       setWriterErrorError("")
     }
+    if(id && pw && e.target.value && content ){
+      setSuccess(true)
+    }
+    else {
+      setSuccess(false)
+    }
   }
   function onChangeContent (e){
     setContent(e.target.value);
     if(e.target.value !== ""){
       setContentErrorError("")
     }
+    if(id && pw && writer && e.target.value ){
+      setSuccess(true)
+    }
+    else {
+      setSuccess(false)
+    }
   }
 
 
-  const onClickSubmit = async()=>{
+  const onClickSubmit = async(e)=>{
     if(!id){
       setIdError("아이디를 입력해주세요")
     }
@@ -98,6 +124,8 @@ export default function BoardWrite(){
         pwError={pwError}
         writerError={writerError}
         contentError={contentError}
+
+        success={success}
       />
     </>
   )

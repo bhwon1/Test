@@ -47,7 +47,10 @@ export default function BoardWriteUI(props){
         <S.RadioLabel htmlFor="image">사진</S.RadioLabel>
       </S.RadioBox>
       <S.Box>
-        <S.CheckBox onClick={props.onClickSubmit}>등록하기</S.CheckBox>
+        <S.CheckBox 
+        onClick={props.onClickSubmit}
+        success={props.success}
+        >등록하기</S.CheckBox>
       </S.Box>
     </S.Container>
     </>
