@@ -1,6 +1,6 @@
-import { gql, useMutation, useQuery} from '@apollo/client'
+import { gql, useQuery} from '@apollo/client'
 import { useRouter } from 'next/router'
-import * as S from './list_emotion'
+import * as S from './edit_emotion'
 
 export const FECTH_BOARDS = gql`
   query fetchBoards($page : Int ){
@@ -125,7 +125,6 @@ export default function List(){
           <S.ListName>작성자</S.ListName>
           <S.ListDate>날짜</S.ListDate>
         </S.ListRow1>
-
         
           {data?.fetchBoards.map( (el,index) => (
             <S.ListRow1 key={index}>  

@@ -9,7 +9,7 @@ export default function BoardWriter (){
   const router = useRouter()
 
     const { data } = useQuery(FETCH_BOARD, {
-    variables: { boardId: router.query.page }, // 가지고 오는 위치
+    variables: { boardId: router.query.boardId }, // 가지고 오는 위치
     
   });
 
