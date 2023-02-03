@@ -138,3 +138,9 @@ export const RadioLabel = styled.label`
   cursor: pointer;
 `
 
+export const ContentBoxWrap = styled.div`
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+`
+
