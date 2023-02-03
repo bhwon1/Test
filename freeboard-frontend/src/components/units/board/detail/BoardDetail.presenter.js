@@ -1,3 +1,4 @@
+import { getDate } from '@/src/components/commons/utils/utils';
 import * as S from './BoardDetail.styled';
 
 export default function BoardWriterUI(props){
@@ -11,7 +12,7 @@ export default function BoardWriterUI(props){
             <S.Profile src='../freeboard_img/profile.png'></S.Profile>
             <S.NameBox>
               <S.User>{props.data?.fetchBoard?.writer}</S.User>
-              <S.Date>{props.data?.fetchBoard?.createdAt}</S.Date>
+              <S.Date>{getDate(props.data?.fetchBoard?.createdAt)}</S.Date>
             </S.NameBox>
             <S.ImgBox>
               <S.Chain src='../freeboard_img/chain.png'></S.Chain>
@@ -39,7 +40,7 @@ export default function BoardWriterUI(props){
         </S.Container>
       </S.Section1>
       <S.ButtonWrap>
-        <S.GobackButton>목록으로</S.GobackButton>
+        <S.GobackButton onClick={props.onClickMoveList}>목록으로</S.GobackButton>
         <S.GobackButton>수정하기</S.GobackButton>
         <S.GobackButton>삭제하기</S.GobackButton>
       </S.ButtonWrap>

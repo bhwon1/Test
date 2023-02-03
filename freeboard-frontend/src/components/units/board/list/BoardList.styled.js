@@ -121,6 +121,10 @@ export const SearchInput = styled.input`
   font-size: 14px;
   font-weight: 400;
   border: 0;
+  ::placeholder {
+    color: black;
+    font-weight: 700;
+  }
 `
 
 export const SearchInputDate = styled.input`
@@ -138,11 +142,12 @@ export const SearchButton = styled.button`
   background: #000;
   color: #fff;
   border-radius: 10px;
+  font-weight: 700;
 `
 
 export const SerachIconBlack = styled.img`
   position: absolute;
-  top: 70px;
+  top: 68px;
   left: 20px; 
   width: 17px;
   height: 17px;
@@ -160,8 +165,8 @@ export const ListRow1 = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   text-align: center;
-  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 `
 
@@ -187,21 +192,48 @@ export const ListDate = styled.h1`
 `
 export const ListNumber2 = styled.h1`
   width: 10%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 `
 export const ListTitle2 = styled.h1`
   width: 60%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
 `
 export const ListName2 = styled.h1`
   width: 20%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 `
 export const ListDate2 = styled.h1`
   width: 10%;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 `
+
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 50px;
+`;
+
+export const Button = styled.button`
+  width: 171px;
+  height: 52px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+
+  :hover {
+    background-color: #ddd;
+  }
+`;
+
+export const PencilIcon = styled.img``;

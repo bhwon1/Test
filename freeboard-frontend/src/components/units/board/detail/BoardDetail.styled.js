@@ -152,4 +152,5 @@ export const GobackButton = styled.button`
   background: #fff;
   border: 1px solid #ddd;
   margin : 0 10px;
+  cursor: pointer;
 `
