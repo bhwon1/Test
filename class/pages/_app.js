@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
   
   return (
     <>
-      <div>www</div>
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>

@@ -27,7 +27,7 @@ export const BestListBox = styled.div`
   border-radius: 10px;
   margin: 0;
   padding: 0;
-  box-shadow: 5px 5px 10px 0px rgb(71,70,70);
+  box-shadow: 3px 3px 10px gray;
 `
 
 export const Row1 = styled.div`
