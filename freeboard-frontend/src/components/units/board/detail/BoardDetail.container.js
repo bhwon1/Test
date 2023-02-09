@@ -32,7 +32,7 @@ export default function BoardWriter (){
   }
 
   const onClickMovetoEdit = (e) => {
-/*     const result = updateBaord({
+    /* const result = updateBaord({
       variables : {
         updateBoardInput : {
           title : (router.query.title),
