@@ -5,7 +5,7 @@ export default function BoardWriteUI(props){
   return(
     <>
     <S.Container>
-      <S.Title>게시물등록</S.Title>
+      <S.Title>{props.isEdit ? "게시물등록": "게시물수정"}</S.Title>
       <S.TitleWrap>
         <S.TitleBox>
           <S.Title1>아이디</S.Title1>
@@ -48,9 +48,9 @@ export default function BoardWriteUI(props){
       </S.RadioBox>
       <S.Box>
         <S.CheckBox 
-        onClick={props.onClickSubmit}
+        onClick={props.isEdit ? props.onClickSubmit : props.onClickUpdate}
         success={props.success}
-        >등록하기</S.CheckBox>
+        >{props.isEdit ? "등록하기" : "수정하기" }</S.CheckBox>
       </S.Box>
     </S.Container>
     </>

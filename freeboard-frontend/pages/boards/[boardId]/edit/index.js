@@ -1,10 +1,11 @@
-import BoardList from '@/src/components/units/board/list/BoardList.container'
+import BoardWrite from "@/src/components/units/board/write/BoardWrite.container";
 
-export default function List(){
+
+export default function BoardEditPage(){
 
   return(
     <>
-      <BoardList/>
+      <BoardWrite isEdit={false}/>
     </>
   )
 }
