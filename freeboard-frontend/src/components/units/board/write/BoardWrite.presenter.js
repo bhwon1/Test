@@ -49,7 +49,7 @@ export default function BoardWriteUI(props){
       <S.Box>
         <S.CheckBox 
         onClick={props.isEdit ? props.onClickSubmit : props.onClickUpdate}
-        success={props.success}
+        success={props.isEdit ?  props.success : true } // 수정할때는 개별가능하게끔 
         >{props.isEdit ? "등록하기" : "수정하기" }</S.CheckBox>
       </S.Box>
     </S.Container>

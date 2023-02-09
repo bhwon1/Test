@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import {useState} from 'react'
 import { useMutation } from '@apollo/client'
 import BoardWriteUI from './BoardWrite.presenter';
-import { CREATE_BOARD, UPDATE_BOARDS } from './BaordWrite.mutation';
+import { CREATE_BOARD, UPDATE_BOARD} from './BaordWrite.mutation';
 
 
 
@@ -13,7 +13,7 @@ export default function BoardWrite(props){
   const router = useRouter()
 
   const [createBoard] = useMutation(CREATE_BOARD)
-  const [updateBoard] = useMutation(UPDATE_BOARDS)
+  const [updateBoard] = useMutation(UPDATE_BOARD)
   
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -115,15 +115,15 @@ export default function BoardWrite(props){
     const result = updateBoard({
       variables : {
         updateBoardInput : {
-          title : setWriter(e.target.value),
-          contents : setContent(e.target.value),
+          title : writer,
+          contents : content,
         } ,
-        password : setPw(e.target.value),
-        boardId : String(router.query.boardId),
+        password : pw,
+        boardId : router.query.boardId,
       }
     })
     alert('수정')
-    router.push(`/boards/[]/list`)
+    router.push(`/boards/${router.query.boardId}`)
   }
 
 
