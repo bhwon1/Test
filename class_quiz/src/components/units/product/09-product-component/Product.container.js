@@ -16,6 +16,7 @@ export default function Product(props){
   const [createProduct] = useMutation(CREATE_PRODUCT)
   const [updateProduct] = useMutation(UPDATE_PRODUCT)
 
+
   const onClickSubmit = async (e) => {
     try{
       // 1. 내용을 저장 및 보내기
@@ -47,29 +48,30 @@ export default function Product(props){
   }
 
   const onClickUpdate = async () => {
-    const myvariables = {
-      productId : String(router.query.productId),
-      updateProductInput : {
-        name,
-        detail,
-        price : Number(price),
-      }
-    }
+    const myvariables = {};
     if(name) myvariables.name = name
     if(detail) myvariables.detail = detail
     if(price) myvariables.price = price
 
+    // 수정 뮤테이션 날리는곳 
     const result = await updateProduct({
-      variables : myvariables
+      variables : {
+        productId : router.query.productId,
+        updateProductInput : {
+        name : name,
+        detail : detail,
+        price : Number(price),
+      }
+      },
     })
 
     console.log(result)
     alert('수정')
-    alert(result.data.updateProduct.message)
+    alert(result.data?.updateProduct.name)
     alert(router.query.productId)
 
     // 2. 페이지 이동 
-    router.push(`/09/product/${result.data.updateProduct._id}`)
+    router.push(`/09/product/${result.data?.updateProduct._id}`)
     
   }
 

@@ -19,3 +19,16 @@ export const UPDATE_PRODUCT = gql`
     }
   }
 `
+
+export const FETCH_PRODUCT = gql`
+  query{
+    fetchProduct(productId: $productId){
+      _id
+      seller
+      name
+      detail
+      price
+      createdAt
+    }
+}
+`
