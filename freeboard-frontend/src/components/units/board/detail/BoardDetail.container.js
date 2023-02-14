@@ -1,10 +1,7 @@
 import BoardWriterUI from "./BoardDetail.presenter";
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from 'next/router';
 import { FETCH_BOARD , DELETE_BOARDS, UPDATE_BOARDS} from "./BoardDetail.queries";
-
-
-
 
 export default function BoardWriter (){
 
@@ -31,17 +28,7 @@ export default function BoardWriter (){
     router.push(`http://localhost:3000/boards/[]/list`)
   }
 
-  const onClickMovetoEdit = (e) => {
-    /* const result = updateBaord({
-      variables : {
-        updateBoardInput : {
-          title : (router.query.title),
-          contents : (router.query.contents),
-        } ,
-        password : (router.query.password),
-        boardId : String(router.query.boardId),
-      }
-    }) */
+  const onClickMovetoEdit = async (e) => {
     router.push(`/boards/${router.query.boardId}/edit`)
   }
 

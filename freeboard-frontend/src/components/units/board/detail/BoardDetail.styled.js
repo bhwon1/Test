@@ -3,8 +3,9 @@ import styled from '@emotion/styled'
 export const Wrap = styled.div`
   width: 100%;
   width: 1200px;
-  height: 1562px;
+  height: auto;
   margin: 0 auto;
+  box-sizing: border-box;
 `
 
 export const Section1 = styled.div`
@@ -154,3 +155,156 @@ export const GobackButton = styled.button`
   margin : 0 10px;
   cursor: pointer;
 `
+
+export const Seciton2 = styled.div`
+  width: 100%;
+`
+
+export const CommentWrap = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+export const UnderLine = styled.div`
+  border-bottom: 1px solid #ddd;
+`
+
+export const Comment = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 0 0 10px;
+`
+
+export const CommnetImg = styled.img`
+  width: 20px;
+  height: 20px;
+`
+
+export const StarBlack = styled.img`
+  width: 20px;
+  height: 20px;
+`
+
+export const CommnetBox = styled.textarea`
+  width: 100%;
+  height: 160px;
+  border: 1px solid #bdbdbd;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  ::placeholder {
+    color: #bdbdbd;
+  }
+`
+
+export const CommentButton = styled.button`
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 16px;
+  margin: 0;
+  height: 52px; 
+  position: absolute;
+  bottom: 3px;
+  right: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+`
+
+export const Delete = styled.img`
+  width: 16px;
+  cursor: pointer;
+`
+export const Remove = styled.img`
+  margin: 0 20px 0 0;
+  cursor: pointer;
+`
+
+export const CommentBox = styled.div`
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 20px 0;
+`
+export const CommentDeleteRemote = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+`
+
+export const CommentContents = styled.div`
+`
+
+export const CommentDate = styled.h2`
+  font-size: 12px;
+  font-weight: 400;
+  flex-direction: column;
+  margin: 20px 0 0 0;
+  color: #bdbdbd;
+`
+
+export const CommentProfile = styled.img`
+  width: 40px;
+  height: 40px;
+  margin : 0 10px 0 0;
+`
+
+export const CommentUserBox = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+`
+
+export const CommentUser = styled.h1`
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 10px 0 0;
+  margin: 0;
+  padding: 0;
+`
+
+export const ProfileStarBlack = styled.img`
+  :nth-child(2) {
+    padding: 0 0 0 10px;
+  }
+`
+export const CommentTextAreaWrap = styled.div`
+  width: 100%;
+  position: relative;
+`
+
+export const CommentWriter = styled.input`
+  width: 180px;
+  height: 52px;
+  padding: 0 10px;
+  margin: 20px 20px 20px 0;
+  ::placeholder {
+    font-size: 16px;
+  }
+`
+export const CommentPassword = styled.input`
+  width: 180px;
+  height: 52px;
+  padding: 0 10px;
+  margin: 20px 20px 20px 0;
+  ::placeholder {
+    font-size: 16px;
+  }
+`
+
+export const ContentsLength = styled.div`
+  width: 100%;
+  height: 51px;
+  line-height: 51px;
+  padding-left: 20px;
+  color: gray;
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+
+`;

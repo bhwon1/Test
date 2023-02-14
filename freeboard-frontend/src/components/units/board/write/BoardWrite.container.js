@@ -102,8 +102,8 @@ export default function BoardWrite(props){
       })
       // 메시지 알림 이전, backend 컴퓨터에 있는 api(함수) 요청하기
       alert ("등록되었습니다")
-      alert(result.data.createBoard._id)
-      router.push(`/boards/${result.data.createBoard._id}`)
+      alert(result.data?.createBoard._id)
+      router.push(`/boards/${result.data?.createBoard._id}`)
       }
       catch(error){
         alert(error.message)
@@ -111,19 +111,26 @@ export default function BoardWrite(props){
     }
   }
 
-  const onClickUpdate = async(e)=>{
-    const result = updateBoard({
+  const onClickUpdate = async ()=>{
+
+    if (!pw) {
+      alert("비밀번호를 입력해주세요.");
+      return;
+    }
+
+    const updateBoardInput = {};
+    if (writer) updateBoardInput.title = writer;
+    if (content) updateBoardInput.contents = content;
+
+    const result = await updateBoard({
       variables : {
-        updateBoardInput : {
-          title : writer,
-          contents : content,
-        } ,
+        updateBoardInput : updateBoardInput,
         password : pw,
         boardId : router.query.boardId,
-      }
+      },
     })
     alert('수정')
-    router.push(`/boards/${router.query.boardId}`)
+    router.push(`/boards/${result.data?.updateBoard._id}`)
   }
 
 
@@ -145,6 +152,7 @@ export default function BoardWrite(props){
         success={success}
 
         isEdit={props.isEdit}
+        data={props.data}
       />
     </>
   )

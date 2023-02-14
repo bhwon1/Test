@@ -43,6 +43,7 @@ export default function BoardWriterUI(props){
         <S.GobackButton onClick={props.onClickMoveList}>목록으로</S.GobackButton>
         <S.GobackButton onClick={props.onClickMovetoEdit}>수정하기</S.GobackButton>
         <S.GobackButton id={props.data?.fetchBoard?._id} onClick={props.onClickDeleteList}>삭제하기</S.GobackButton>
+        <S.UnderLine></S.UnderLine>
       </S.ButtonWrap>
     </S.Wrap>
     </>

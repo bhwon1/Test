@@ -9,20 +9,40 @@ export default function BoardWriteUI(props){
       <S.TitleWrap>
         <S.TitleBox>
           <S.Title1>아이디</S.Title1>
-          <S.Title1Input type="text" placeholder='제목을 작성해주세요' onChange={props.onChangeId}/>
+          <S.Title1Input 
+            type="text" 
+            placeholder='제목을 작성해주세요' 
+            onChange={props.onChangeId}
+            defaultValue={props.data?.fetchBoard.writer || ""}
+            readOnly={!!props.data?.fetchBoard.writer}
+            />
           <S.Error>{props.idError}</S.Error>
         </S.TitleBox>
         <S.TitleBox>
           <S.Title1>비밀번호</S.Title1>
-          <S.Title1Input type="password" placeholder='비밀번호를 작성해주세요' onChange={props.onChangePw}/>
+          <S.Title1Input 
+            type="password" 
+            placeholder='비밀번호를 작성해주세요' 
+            onChange={props.onChangePw}
+          />
           <S.Error>{props.pwError}</S.Error>
         </S.TitleBox>
       </S.TitleWrap>
-      <S.Title1>작성자</S.Title1>
-      <S.Title1Input type="text" placeholder='제목을 작성해주세요' onChange={props.onChangeWriter}/>
+        <S.Title1>작성자</S.Title1>
+        <S.Title1Input 
+          type="text" 
+          placeholder='제목을 작성해주세요'
+          onChange={props.onChangeWriter} 
+          defaultValue={props.data?.fetchBoard.title}
+        />
       <S.Error>{props.writerError}</S.Error>
       <S.Content>내용</S.Content>
-      <S.ContentInput type="text" placeholder='내용을 작성해주세요' onChange={props.onChangeContent}/>
+      <S.ContentInput 
+        type="text" 
+        placeholder='내용을 작성해주세요' 
+        onChange={props.onChangeContent} 
+        defaultValue={props.data?.fetchBoard.contents}
+      />
       <S.Error>{props.contentError}</S.Error>
       <S.Addr>주소</S.Addr>
       <S.AddrWrap>
