@@ -1,7 +1,9 @@
-import { getDate } from '@/src/components/commons/utils/utils'
+import { getDate } from '../../../commons/utils/utils'
+import { IQuery } from '../../../../commons/types/generated/types'
 import * as S from './BoardList.styled'
+import { IBoardListUIProps } from './BoardList.types'
 
-export default function BoardListUI(props){
+export default function BoardListUI(props : IBoardListUIProps){
 
   return(
     <>

@@ -1,6 +1,7 @@
-import * as S from '../../board/detail/BoardDetail.styled'
+import * as S from '../../boardcomment/write/BoardCommentWrite.styled'
+import { IBoardCommentWriteUIProps } from './BoardCommentWrite.types'
 
-export default function BoardCommentWriteUI (props){
+export default function BoardCommentWriteUI (props : IBoardCommentWriteUIProps){
 
   return(
     <>

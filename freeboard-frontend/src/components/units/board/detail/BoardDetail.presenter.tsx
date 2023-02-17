@@ -1,7 +1,8 @@
-import { getDate } from '@/src/components/commons/utils/utils';
+import { getDate } from '../../../../../src/components/commons/utils/utils';
 import * as S from './BoardDetail.styled';
+import { IBoardDetailUIProps } from './BoardDetail.types';
 
-export default function BoardWriterUI(props){
+export default function BoardDetailUI(props : IBoardDetailUIProps){
 
   return(
     <>

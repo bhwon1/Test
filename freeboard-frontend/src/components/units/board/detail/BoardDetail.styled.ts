@@ -185,32 +185,9 @@ export const StarBlack = styled.img`
   height: 20px;
 `
 
-export const CommnetBox = styled.textarea`
-  width: 100%;
-  height: 160px;
-  border: 1px solid #bdbdbd;
-  padding: 20px;
-  box-sizing: border-box;
-  position: relative;
-  ::placeholder {
-    color: #bdbdbd;
-  }
-`
 
-export const CommentButton = styled.button`
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  padding: 14px 16px;
-  margin: 0;
-  height: 52px; 
-  position: absolute;
-  bottom: 3px;
-  right: 0;
-  box-sizing: border-box;
-  cursor: pointer;
-`
+
+
 
 export const Delete = styled.img`
   width: 16px;
@@ -236,16 +213,9 @@ export const CommentDeleteRemote = styled.div`
   align-items: flex-start;
 `
 
-export const CommentContents = styled.div`
-`
 
-export const CommentDate = styled.h2`
-  font-size: 12px;
-  font-weight: 400;
-  flex-direction: column;
-  margin: 20px 0 0 0;
-  color: #bdbdbd;
-`
+
+
 
 export const CommentProfile = styled.img`
   width: 40px;
@@ -273,10 +243,7 @@ export const ProfileStarBlack = styled.img`
     padding: 0 0 0 10px;
   }
 `
-export const CommentTextAreaWrap = styled.div`
-  width: 100%;
-  position: relative;
-`
+
 
 export const CommentWriter = styled.input`
   width: 180px;
@@ -297,14 +264,3 @@ export const CommentPassword = styled.input`
   }
 `
 
-export const ContentsLength = styled.div`
-  width: 100%;
-  height: 51px;
-  line-height: 51px;
-  padding-left: 20px;
-  color: gray;
-  position: absolute;
-  bottom: 8px;
-  left: 10px;
-
-`;

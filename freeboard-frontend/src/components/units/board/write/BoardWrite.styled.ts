@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { ISubmitButtonProps } from './BoardWrite.types'
 
 
 export const Container = styled.div`
@@ -118,7 +119,7 @@ export const Box = styled.div`
 
 export const CheckBox = styled.button`
   padding: 14px 60px;
-  background : ${ (props) => 
+  background : ${ (props: ISubmitButtonProps) => 
   { return props.success ? "#ffd600" : "ddd"}};
   border : 0;
   font-size : 16px;

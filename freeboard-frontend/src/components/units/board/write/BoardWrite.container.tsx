@@ -1,19 +1,26 @@
 import { useRouter } from 'next/router';
-import {useState} from 'react'
+import {ChangeEvent, useState} from 'react'
 import { useMutation } from '@apollo/client'
 import BoardWriteUI from './BoardWrite.presenter';
-import { CREATE_BOARD, UPDATE_BOARD} from './BaordWrite.mutation';
+import { CREATE_BOARD, UPDATE_BOARD} from './BoardWrite.mutation';
+import { IMutation, IMutationCreateBoardArgs, IMutationUpdateBoardArgs } from '../../../../commons/types/generated/types';
+import { IBoardWriteProps } from './BoardWrite.types';
 
 
-
-export default function BoardWrite(props){
+export default function BoardWrite(props : IBoardWriteProps){
 
   const [success, setSuccess] = useState(false)
 
   const router = useRouter()
 
-  const [createBoard] = useMutation(CREATE_BOARD)
-  const [updateBoard] = useMutation(UPDATE_BOARD)
+  const [createBoard] = useMutation<
+    Pick<IMutation , "createBoard">,
+    IMutationCreateBoardArgs
+  >(CREATE_BOARD);
+  const [updateBoard] = useMutation<
+    Pick<IMutation, "updateBoard">,
+    IMutationUpdateBoardArgs
+  >(UPDATE_BOARD);
   
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
@@ -25,7 +32,7 @@ export default function BoardWrite(props){
   const [writerError, setWriterErrorError] = useState("")
   const [contentError, setContentErrorError] = useState("")
 
-  function onChangeId (e){
+  function onChangeId (e : ChangeEvent<HTMLInputElement>){
     setId(e.target.value);
     if(e.target.value !== ""){
       setIdError("")
@@ -37,7 +44,7 @@ export default function BoardWrite(props){
       setSuccess(false)
     }
   }
-  function onChangePw (e){
+  function onChangePw (e : ChangeEvent<HTMLInputElement>){
     setPw(e.target.value);
     if(e.target.value !== ""){
       setPwError("")
@@ -49,7 +56,7 @@ export default function BoardWrite(props){
       setSuccess(false)
     }
   }
-  function onChangeWriter (e){
+  function onChangeWriter (e : ChangeEvent<HTMLInputElement>){
     setWriter(e.target.value);
     if(e.target.value !== ""){
       setWriterErrorError("")
@@ -61,7 +68,7 @@ export default function BoardWrite(props){
       setSuccess(false)
     }
   }
-  function onChangeContent (e){
+  function onChangeContent (e : ChangeEvent<HTMLInputElement>){
     setContent(e.target.value);
     if(e.target.value !== ""){
       setContentErrorError("")
@@ -75,7 +82,7 @@ export default function BoardWrite(props){
   }
 
 
-  const onClickSubmit = async(e)=>{
+  const onClickSubmit = async()=>{
     if(!id){
       setIdError("아이디를 입력해주세요")
     }
@@ -106,7 +113,7 @@ export default function BoardWrite(props){
       router.push(`/boards/${result.data?.createBoard._id}`)
       }
       catch(error){
-        alert(error.message)
+        alert(error)
       }
     }
   }
@@ -118,7 +125,7 @@ export default function BoardWrite(props){
       return;
     }
 
-    const updateBoardInput = {};
+    const updateBoardInput : IUpdateBoardInput = {};
     if (writer) updateBoardInput.title = writer;
     if (content) updateBoardInput.contents = content;
 
@@ -136,24 +143,24 @@ export default function BoardWrite(props){
 
   return(
     <>
-      <BoardWriteUI
-        onChangeId={onChangeId}
-        onChangePw={onChangePw}
-        onChangeWriter={onChangeWriter}
-        onChangeContent={onChangeContent}
-        onClickSubmit={onClickSubmit}
-        onClickUpdate={onClickUpdate}
-
-        idError={idError}
-        pwError={pwError}
-        writerError={writerError}
-        contentError={contentError}
-
-        success={success}
-
-        isEdit={props.isEdit}
-        data={props.data}
-      />
+      {BoardWriteUI({
+        onChangeId : onChangeId,
+        onChangePw : onChangePw,
+        onChangeWriter : onChangeWriter,
+        onChangeContent : onChangeContent,
+        onClickSubmit : onClickSubmit,
+        onClickUpdate : onClickUpdate,
+        
+        idError : idError,
+        pwError : pwError,
+        writerError : writerError,
+        contentError : contentError,
+        
+        success : success,
+        
+        isEdit : props.isEdit,
+        data : props.data
+      })} 
     </>
   )
 }
