@@ -2,11 +2,11 @@ import { gql } from "@apollo/client";
 
 export const CREATE_COMMENT_BOARD = gql`
   mutation createBoardComment(
-    $createBoardCommentInput: CreateBoardCommentInput! 
+    $createBoardCommentInput: CreateBoardCommentInput!
     $boardId: ID!
   ) {
     createBoardComment(
-      createBoardCommentInput : $createBoardCommentInput 
+      createBoardCommentInput: $createBoardCommentInput
       boardId: $boardId
     ) {
       _id

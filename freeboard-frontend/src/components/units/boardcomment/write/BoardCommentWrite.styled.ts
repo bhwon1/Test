@@ -6,26 +6,26 @@ export const Wrap = styled.div`
   height: auto;
   margin: 0 auto;
   box-sizing: border-box;
-`
+`;
 
 export const Seciton2 = styled.div`
   width: 100%;
-`
+`;
 
 export const CommentWrap = styled.div`
   display: flex;
   align-items: center;
-`
+`;
 
 export const CommnetImg = styled.img`
   width: 20px;
   height: 20px;
-`
+`;
 export const Comment = styled.h2`
   font-size: 18px;
   font-weight: 700;
   padding: 0 0 0 10px;
-`
+`;
 
 export const CommentWriter = styled.input`
   width: 180px;
@@ -35,7 +35,7 @@ export const CommentWriter = styled.input`
   ::placeholder {
     font-size: 16px;
   }
-`
+`;
 export const CommentPassword = styled.input`
   width: 180px;
   height: 52px;
@@ -44,16 +44,16 @@ export const CommentPassword = styled.input`
   ::placeholder {
     font-size: 16px;
   }
-`
+`;
 
 export const StarBlack = styled.img`
   width: 20px;
   height: 20px;
-`
+`;
 export const CommentTextAreaWrap = styled.div`
   width: 100%;
   position: relative;
-`
+`;
 
 export const CommnetBox = styled.textarea`
   width: 100%;
@@ -65,7 +65,7 @@ export const CommnetBox = styled.textarea`
   ::placeholder {
     color: #bdbdbd;
   }
-`
+`;
 export const ContentsLength = styled.div`
   width: 100%;
   height: 51px;
@@ -84,10 +84,10 @@ export const CommentButton = styled.button`
   font-weight: 700;
   padding: 14px 16px;
   margin: 0;
-  height: 52px; 
+  height: 52px;
   position: absolute;
   bottom: 3px;
   right: 0;
   box-sizing: border-box;
   cursor: pointer;
-`
+`;

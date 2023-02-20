@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const FECTH_BOARDS = gql`
-  query fetchBoards($page : Int ){
-    fetchBoards(page: $page){
+  query fetchBoards($page: Int) {
+    fetchBoards(page: $page) {
       _id
       writer
       title
@@ -10,4 +10,4 @@ export const FECTH_BOARDS = gql`
       createdAt
     }
   }
-`
+`;
