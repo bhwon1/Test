@@ -1,5 +1,6 @@
+import "../styles/globals.css";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 // const  {ApolloProvider, ApolloClient, InMemoryCache } = require('@apollo/client') // commonjs 옛날
 
 function MyApp({ Component, pageProps }: AppProps) {
