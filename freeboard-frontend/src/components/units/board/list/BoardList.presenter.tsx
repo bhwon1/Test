@@ -1,6 +1,6 @@
 import { getDate } from "../../../commons/utils/utils";
 import * as S from "./BoardList.styled";
-import { IBoardListUIProps } from "./BoardList.types";
+import type { IBoardListUIProps } from "./BoardList.types";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (

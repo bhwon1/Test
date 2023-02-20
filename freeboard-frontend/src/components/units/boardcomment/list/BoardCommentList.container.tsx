@@ -5,8 +5,8 @@ import {
   DELETE_BOARD_COMMENT,
   FETCH_BOARD_COMMENTS,
 } from "./BoardCommentList.queries";
-import { MouseEvent } from "react";
-import {
+import type { MouseEvent } from "react";
+import type {
   IMutation,
   IMutationDeleteBoardCommentArgs,
   IQuery,

@@ -1,7 +1,7 @@
 import BoardWrite from "../../../../src/components/units/board/write/BoardWrite.container";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import {
+import type {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../src/commons/types/generated/types";

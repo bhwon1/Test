@@ -2,11 +2,11 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardListUI from "./BoardList.presenter";
 import { FECTH_BOARDS } from "./BoardList.queries";
-import {
+import type {
   IQuery,
   IQueryFetchBoardsArgs,
 } from "../../../../commons/types/generated/types";
-import { MouseEvent } from "react";
+import type { MouseEvent } from "react";
 
 export default function BoardList() {
   const router = useRouter();
@@ -16,11 +16,11 @@ export default function BoardList() {
   );
 
   const onClickPage = (e: MouseEvent<HTMLDivElement>) => {
-    router.push(`/boards/${e.currentTarget.id}`);
+    void router.push(`/boards/${e.currentTarget.id}`);
   };
 
   const onClickMoveToBoardNew = () => {
-    router.push(`/boards/new`);
+    void router.push(`/boards/new`);
   };
 
   return (

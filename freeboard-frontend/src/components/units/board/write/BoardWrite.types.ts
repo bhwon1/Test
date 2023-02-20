@@ -1,5 +1,8 @@
-import { IMutation, IQuery } from "../../../../commons/types/generated/types";
-import { ChangeEvent } from "react";
+import type {
+  IMutation,
+  IQuery,
+} from "../../../../commons/types/generated/types";
+import type { ChangeEvent } from "react";
 
 export interface IBoardWriteProps {
   isEdit: boolean;

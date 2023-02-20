@@ -1,7 +1,8 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState, ChangeEvent } from "react";
-import {
+import { useState } from "react";
+import type { ChangeEvent } from "react";
+import type {
   IMutation,
   IMutationCreateBoardCommentArgs,
 } from "../../../../commons/types/generated/types";
@@ -57,11 +58,11 @@ export default function BoardCommentWrite() {
   return (
     <>
       {BoardCommentWriteUI({
-        onClickCommentSubmit: onClickCommentSubmit,
-        onChangeWriter: onChangeWriter,
-        onChangePassword: onChangePassword,
-        onChangeContents: onChangeContents,
-        contents: contents,
+        onClickCommentSubmit,
+        onChangeWriter,
+        onChangePassword,
+        onChangeContents,
+        contents,
       })}
     </>
   );

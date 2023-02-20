@@ -1,5 +1,5 @@
 import * as S from "../../boardcomment/write/BoardCommentWrite.styled";
-import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
+import type { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
 
 export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (

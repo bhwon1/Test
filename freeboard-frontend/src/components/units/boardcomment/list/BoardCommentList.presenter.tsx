@@ -1,6 +1,6 @@
 import { getDate } from "../../../../../src/components/commons/utils/utils";
 import * as S from "../../boardcomment/list/BoardCommnetList.styled";
-import { IBoardCommentListUIProps } from "./BoardCommentList.types";
+import type { IBoardCommentListUIProps } from "./BoardCommentList.types";
 
 export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
   return (

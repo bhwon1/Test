@@ -1,14 +1,15 @@
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
+import type { ChangeEvent } from "react";
 import { useMutation } from "@apollo/client";
 import BoardWriteUI from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.mutation";
-import {
+import type {
   IMutation,
   IMutationCreateBoardArgs,
   IMutationUpdateBoardArgs,
 } from "../../../../commons/types/generated/types";
-import { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
+import type { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const [success, setSuccess] = useState(false);
@@ -106,7 +107,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         // 메시지 알림 이전, backend 컴퓨터에 있는 api(함수) 요청하기
         alert("등록되었습니다");
         alert(result.data?.createBoard._id);
-        router.push(`/boards/${result.data?.createBoard._id}`);
+        void router.push(`/boards/${result.data?.createBoard._id ?? ""}`);
       } catch (error) {
         if (error instanceof Error) alert(error.message);
       }
@@ -131,7 +132,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
       },
     });
     alert("수정");
-    router.push(`/boards/${result.data?.updateBoard._id}`);
+    void router.push(`/boards/${result.data?.updateBoard._id ?? ""}`);
   };
 
   return (

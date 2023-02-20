@@ -1,5 +1,5 @@
 import * as S from "./BoardWrite.styled";
-import { IBoardWriteUIProps } from "./BoardWrite.types";
+import type { IBoardWriteUIProps } from "./BoardWrite.types";
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
@@ -13,10 +13,10 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               type="text"
               placeholder="제목을 작성해주세요"
               onChange={props.onChangeId}
-              defaultValue={props.data?.fetchBoard.writer || ""}
+              defaultValue={props.data?.fetchBoard.writer ?? ""}
               readOnly={!!props.data?.fetchBoard.writer}
             />
-            <S.Error>{props.idError}</S.Error>
+            0<S.Error>{props.idError}</S.Error>
           </S.TitleBox>
           <S.TitleBox>
             <S.Title1>비밀번호</S.Title1>

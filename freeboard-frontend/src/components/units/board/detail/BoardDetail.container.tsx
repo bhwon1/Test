@@ -1,13 +1,9 @@
-import { MouseEvent } from "react";
+import type { MouseEvent } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import {
-  FETCH_BOARD,
-  DELETE_BOARDS,
-  UPDATE_BOARDS,
-} from "./BoardDetail.queries";
+import { FETCH_BOARD, DELETE_BOARDS } from "./BoardDetail.queries";
 import BoardDetailUI from "./BoardDetail.presenter";
-import {
+import type {
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
@@ -16,7 +12,6 @@ export default function BoardDetail() {
   const router = useRouter();
 
   const [deleteBoard] = useMutation(DELETE_BOARDS);
-  const [updateBaord] = useMutation(UPDATE_BOARDS);
 
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
@@ -26,30 +21,35 @@ export default function BoardDetail() {
   );
 
   const onClickMoveList = () => {
-    router.push(`/boards/[]/list`);
+    void router.push(`/boards/[]/list`);
   };
 
-  const onClickDeleteList = (e: MouseEvent<HTMLButtonElement>) => {
-    deleteBoard({
+  const onClickDeleteList = async (e: MouseEvent<HTMLButtonElement>) => {
+    await deleteBoard({
       variables: {
         boardId: e.currentTarget.id,
       },
     });
     alert("내용이 삭제 되었습니다.");
-    router.push(`http://localhost:3000/boards/[]/list`);
+    void router.push(`http://localhost:3000/boards/[]/list`);
   };
 
-  const onClickMovetoEdit = async () => {
-    router.push(`/boards/${router.query.boardId}/edit`);
+  const onClickMovetoEdit = () => {
+    if (typeof router.query.boardId !== "string") {
+      alert("올바르지 않은 게시글 아이디입니다.");
+      return;
+    }
+
+    void router.push(`/boards/${router.query.boardId}/edit`);
   };
 
   return (
     <>
       {BoardDetailUI({
-        onClickMoveList: onClickMoveList,
-        onClickDeleteList: onClickDeleteList,
-        onClickMovetoEdit: onClickMovetoEdit,
-        data: data,
+        onClickMoveList,
+        onClickDeleteList,
+        onClickMovetoEdit,
+        data,
       })}
     </>
   );
