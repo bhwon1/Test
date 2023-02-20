@@ -16,7 +16,7 @@ export default function BoardCommentList (){
     Pick<IQuery, "fetchBoardComments">,
     IQueryFetchBoardCommentsArgs
   >(FETCH_BOARD_COMMENTS, { 
-    variables: { boardId: router.query.boardId }
+    variables: { boardId: String(router.query.boardId) }
   });
 
   const onClickDelete = async (e: ChangeEvent<HTMLImageElement>) => {
@@ -25,7 +25,7 @@ export default function BoardCommentList (){
       await deleteBoardComment({
         variables: {
           password: myPassword,
-          boardCommentId: e.target.id,
+          boardCommentId: e.currentTarget.id,
         },
         refetchQueries: [
           {

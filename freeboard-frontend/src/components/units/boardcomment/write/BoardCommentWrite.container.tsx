@@ -38,7 +38,7 @@ export default function BoardCommentWrite (){
           contents,
           rating : 0, 
         },
-        boardId : router.query.boardId
+        boardId : String(router.query.boardId)
       },
       refetchQueries: [
           {

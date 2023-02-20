@@ -133,7 +133,7 @@ export default function BoardWrite(props : IBoardWriteProps){
       variables : {
         updateBoardInput : updateBoardInput,
         password : pw,
-        boardId : router.query.boardId,
+        boardId : String(router.query.boardId),
       },
     })
     alert('수정')

@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import { MouseEvent } from 'react'
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from 'next/router';
 import { FETCH_BOARD , DELETE_BOARDS, UPDATE_BOARDS} from "./BoardDetail.queries";
@@ -16,17 +16,17 @@ export default function BoardDetail (){
     Pick<IQuery , "fetchBoard">,
     IQueryFetchBoardArgs
   >(FETCH_BOARD, {
-    variables: { boardId: router.query.boardId }, // 가지고 오는 위치
+    variables: { boardId: String(router.query.boardId) }, // 가지고 오는 위치
   });
 
   const onClickMoveList = () =>{
     router.push(`/boards/[]/list`)
   }
 
-  const onClickDeleteList = (e : ChangeEvent<HTMLInputElement> )=>{
+  const onClickDeleteList = (e: MouseEvent<HTMLButtonElement>)=>{
     deleteBoard({
       variables : {
-        boardId : String(e.target.id)
+        boardId : e.currentTarget.id
       }
     })
     alert("내용이 삭제 되었습니다.")
