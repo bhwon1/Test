@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -69,4 +70,8 @@ export const CommentDate = styled.h2`
   flex-direction: column;
   margin: 20px 0 0 0;
   color: #bdbdbd;
+`;
+
+export const ListStar = styled(Rate)`
+  margin: 0 0 0 20px;
 `;

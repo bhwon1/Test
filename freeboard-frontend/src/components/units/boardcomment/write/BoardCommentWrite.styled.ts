@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Wrap = styled.div`
   width: 100%;
@@ -91,3 +92,5 @@ export const CommentButton = styled.button`
   box-sizing: border-box;
   cursor: pointer;
 `;
+
+export const WriteStar = styled(Rate)``;

@@ -20,11 +20,7 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
             placeholder="비밀번호"
             onChange={props.onChangePassword}
           />
-          <S.StarBlack src="../freeboard_img/star_black.png"></S.StarBlack>
-          <S.StarBlack src="../freeboard_img/star_black.png"></S.StarBlack>
-          <S.StarBlack src="../freeboard_img/star_black.png"></S.StarBlack>
-          <S.StarBlack src="../freeboard_img/star_black.png"></S.StarBlack>
-          <S.StarBlack src="../freeboard_img/star_black.png"></S.StarBlack>
+          <S.WriteStar allowHalf defaultValue={2.5} />
           <S.CommentTextAreaWrap>
             <S.CommnetBox
               onChange={props.onChangeContents}
