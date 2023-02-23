@@ -1,9 +1,17 @@
 import type { MouseEvent } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { FETCH_BOARD, DELETE_BOARDS } from "./BoardDetail.queries";
+import {
+  FETCH_BOARD,
+  DELETE_BOARDS,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
+} from "./BoardDetail.queries";
 import BoardDetailUI from "./BoardDetail.presenter";
 import type {
+  IMutation,
+  IMutationDislikeBoardArgs,
+  IMutationLikeBoardArgs,
   IQuery,
   IQueryFetchBoardArgs,
 } from "../../../../commons/types/generated/types";
@@ -12,6 +20,16 @@ export default function BoardDetail() {
   const router = useRouter();
 
   const [deleteBoard] = useMutation(DELETE_BOARDS);
+
+  const [likeBoard] = useMutation<
+    Pick<IMutation, "likeBoard">,
+    IMutationLikeBoardArgs
+  >(LIKE_BOARD);
+
+  const [disLikeCount] = useMutation<
+    Pick<IMutation, "dislikeBoard">,
+    IMutationDislikeBoardArgs
+  >(DISLIKE_BOARD);
 
   const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardArgs>(
     FETCH_BOARD,
@@ -43,6 +61,32 @@ export default function BoardDetail() {
     void router.push(`/boards/${router.query.boardId}/edit`);
   };
 
+  const onClickLike = async () => {
+    await likeBoard({
+      variables: { boardId: String(router.query.boardId) },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: { boardId: router.query.boardId },
+        },
+      ],
+    });
+  };
+
+  const onClickDislike = async () => {
+    await disLikeCount({
+      variables: {
+        boardId: String(router.query.boardId),
+      },
+      refetchQueries: [
+        {
+          query: FETCH_BOARD,
+          variables: { boardId: router.query.boardId },
+        },
+      ],
+    });
+  };
+
   return (
     <>
       {BoardDetailUI({
@@ -50,6 +94,8 @@ export default function BoardDetail() {
         onClickDeleteList,
         onClickMovetoEdit,
         data,
+        onClickLike,
+        onClickDislike,
       })}
     </>
   );

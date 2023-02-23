@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
+import ReactPlayer from "react-player";
 
 export const Wrap = styled.div`
-  width: 100%;
   width: 1200px;
   height: auto;
   margin: 0 auto;
@@ -11,11 +11,12 @@ export const Wrap = styled.div`
 export const Section1 = styled.div`
   box-sizing: border-box;
   border: 1px solid #ddd;
+  margin: 50px 0 0 0;
 `;
 
 export const Container = styled.div`
   width: 996px;
-  height: 1500px;
+  height: auto;
   margin: 0 auto;
   display: flex;
   flex-flow: column;
@@ -96,7 +97,7 @@ export const VideoBox = styled.div`
   justify-content: center;
 `;
 
-export const Video = styled.img`
+export const Video = styled(ReactPlayer)`
   width: 486px;
   height: 240px;
   border: 1px solid #000;

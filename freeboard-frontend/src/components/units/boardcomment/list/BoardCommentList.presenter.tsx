@@ -13,7 +13,7 @@ export default function BoardCommentListUI(props: IBoardCommentListUIProps) {
               <S.NameBox>
                 <S.CommentUserBox>
                   <S.CommentUser>{el.writer}</S.CommentUser>
-                  <S.ListStar disabled defaultValue={2} />
+                  <S.ListStar value={el.rating} disabled />
                 </S.CommentUserBox>
                 <S.CommentContents>{el.contents}</S.CommentContents>
                 <S.CommentDate>{getDate(el.createdAt)} 날짜</S.CommentDate>

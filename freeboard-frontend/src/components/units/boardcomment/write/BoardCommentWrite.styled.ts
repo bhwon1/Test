@@ -11,6 +11,7 @@ export const Wrap = styled.div`
 
 export const Seciton2 = styled.div`
   width: 100%;
+  padding: 0 0 30px 0;
 `;
 
 export const CommentWrap = styled.div`
@@ -87,7 +88,7 @@ export const CommentButton = styled.button`
   margin: 0;
   height: 52px;
   position: absolute;
-  bottom: 3px;
+  bottom: 5px;
   right: 0;
   box-sizing: border-box;
   cursor: pointer;

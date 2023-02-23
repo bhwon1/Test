@@ -1,17 +1,20 @@
-import type {
-  IMutation,
-  IQuery,
-} from "../../../../commons/types/generated/types";
+import type { IQuery } from "../../../../commons/types/generated/types";
 import type { ChangeEvent } from "react";
 
 export interface IBoardWriteProps {
   isEdit: boolean;
-  data: Pick<IMutation, "createBoard">;
+  data?: Pick<IQuery, "fetchBoard">;
 }
 
 export interface IUpdateBoardInput {
   title?: string;
   contents?: string;
+  youtubeUrl?: string;
+  boardAddress?: {
+    zipcode?: string;
+    address?: string;
+    addressDetail?: string;
+  };
 }
 
 export interface IBoardWriteUIProps {
@@ -23,6 +26,10 @@ export interface IBoardWriteUIProps {
   onChangeWriter: (e: ChangeEvent<HTMLInputElement>) => void;
   onChangeContent: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 
+  onChangeAddressDetail: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChangeYoutubeUrl: (e: ChangeEvent<HTMLInputElement>) => void;
+  onCompleteAddressSearch: (data: any) => void;
+
   onClickSubmit: () => void;
   onClickUpdate: () => void;
 
@@ -30,6 +37,13 @@ export interface IBoardWriteUIProps {
   pwError: string;
   writerError: string;
   contentError: string;
+
+  address: string;
+  zipcode: string;
+  addressDetail: string;
+
+  onToggleAddrModal: () => void;
+  isopen: boolean;
 }
 
 export interface ISubmitButtonProps {

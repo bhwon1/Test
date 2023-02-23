@@ -1,3 +1,4 @@
+import { Tooltip } from "antd";
 import { getDate } from "../../../../../src/components/commons/utils/utils";
 import * as S from "./BoardDetail.styled";
 import type { IBoardDetailUIProps } from "./BoardDetail.types";
@@ -16,7 +17,12 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
               </S.NameBox>
               <S.ImgBox>
                 <S.Chain src="../freeboard_img/chain.png"></S.Chain>
-                <S.Location src="../freeboard_img/location.png"></S.Location>
+                <Tooltip
+                  placement="topRight"
+                  title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.zipcode}`}
+                >
+                  <S.Location src="../freeboard_img/location.png" />
+                </Tooltip>
               </S.ImgBox>
             </S.ProfileBox>
             <S.Contents>
@@ -26,17 +32,29 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
                 {props.data?.fetchBoard?.contents}
               </S.ContentDetail>
               <S.VideoBox>
-                <S.Video src="../freeboard_img/video.png"></S.Video>
+                {props.data?.fetchBoard.youtubeUrl && (
+                  <S.Video url={props.data?.fetchBoard.youtubeUrl}></S.Video>
+                )}
               </S.VideoBox>
             </S.Contents>
             <S.LikeWrap>
               <S.LikeBox>
-                <S.LikeImg src="../freeboard_img/up.png"></S.LikeImg>
-                <S.LikeUpCount>1234</S.LikeUpCount>
+                <S.LikeImg
+                  onClick={props.onClickLike}
+                  src="../freeboard_img/up.png"
+                />
+                <S.LikeUpCount>
+                  {props.data?.fetchBoard.likeCount}
+                </S.LikeUpCount>
               </S.LikeBox>
               <S.LikeBox>
-                <S.LikeImg src="../freeboard_img/down.png"></S.LikeImg>
-                <S.LikeDownCount>1234</S.LikeDownCount>
+                <S.LikeImg
+                  onClick={props.onClickDislike}
+                  src="../freeboard_img/down.png"
+                />
+                <S.LikeDownCount>
+                  {props.data?.fetchBoard.dislikeCount}
+                </S.LikeDownCount>
               </S.LikeBox>
             </S.LikeWrap>
           </S.Container>

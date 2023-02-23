@@ -1,4 +1,4 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, Dispatch, SetStateAction } from "react";
 
 export interface IBoardCommentWriteUIProps {
   onChangeWriter: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -6,4 +6,5 @@ export interface IBoardCommentWriteUIProps {
   onChangeContents: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onClickCommentSubmit: () => void;
   contents: string;
+  setStar: Dispatch<SetStateAction<number>>;
 }

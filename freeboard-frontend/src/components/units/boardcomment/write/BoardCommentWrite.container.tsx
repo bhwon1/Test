@@ -7,19 +7,20 @@ import type {
   IMutationCreateBoardCommentArgs,
 } from "../../../../commons/types/generated/types";
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
-import { CREATE_COMMENT_BOARD } from "./BoardCommentWrite.mutaion";
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
+import { CREATE_BOARD_COMMENT } from "./BoardCommentWrite.mutaion";
 
 export default function BoardCommentWrite() {
   const router = useRouter();
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
+  const [star, setStar] = useState(0);
 
-  const [createCommentBoard] = useMutation<
+  const [createBoardComment] = useMutation<
     Pick<IMutation, "createBoardComment">,
     IMutationCreateBoardCommentArgs
-  >(CREATE_COMMENT_BOARD);
+  >(CREATE_BOARD_COMMENT);
 
   const onChangeWriter = (e: ChangeEvent<HTMLInputElement>) => {
     setWriter(e.target.value);
@@ -34,13 +35,13 @@ export default function BoardCommentWrite() {
   };
 
   const onClickCommentSubmit = async () => {
-    await createCommentBoard({
+    await createBoardComment({
       variables: {
         createBoardCommentInput: {
           writer,
           password,
           contents,
-          rating: 0,
+          rating: star,
         },
         boardId: String(router.query.boardId),
       },
@@ -63,6 +64,7 @@ export default function BoardCommentWrite() {
         onChangePassword,
         onChangeContents,
         contents,
+        setStar,
       })}
     </>
   );

@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   width: 100%;
   width: 1200px;
   height: auto;
-  margin: 0 auto;
+  margin: 50px auto;
   box-sizing: border-box;
 `;
 

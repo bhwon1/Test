@@ -1,12 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
-
-  let aaa = 3
-  let bbb = 30000
-
   return (
     <>
       <Head>
@@ -27,7 +23,7 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              By{' '}
+              By{" "}
               <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
@@ -39,9 +35,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-
-
       </main>
     </>
-  )
+  );
 }

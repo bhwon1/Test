@@ -10,6 +10,7 @@ import type {
   IMutationUpdateBoardArgs,
 } from "../../../../commons/types/generated/types";
 import type { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
+import type { Address } from "react-daum-postcode";
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const [success, setSuccess] = useState(false);
@@ -101,13 +102,23 @@ export default function BoardWrite(props: IBoardWriteProps) {
               password: pw,
               title: writer,
               contents: content,
+              youtubeUrl,
+              boardAddress: {
+                zipcode,
+                address,
+                addressDetail,
+              },
             },
           },
         });
         // 메시지 알림 이전, backend 컴퓨터에 있는 api(함수) 요청하기
+        if (typeof result.data?.createBoard._id !== "string") {
+          alert("일시적인 오류가 있습니다. 다시시도 해주세요! ");
+          return;
+        }
         alert("등록되었습니다");
         alert(result.data?.createBoard._id);
-        void router.push(`/boards/${result.data?.createBoard._id ?? ""}`);
+        void router.push(`/boards/${result.data?.createBoard._id || ""}`);
       } catch (error) {
         if (error instanceof Error) alert(error.message);
       }
@@ -115,6 +126,18 @@ export default function BoardWrite(props: IBoardWriteProps) {
   };
 
   const onClickUpdate = async () => {
+    if (
+      !writer &&
+      !content &&
+      !youtubeUrl &&
+      !address &&
+      !addressDetail &&
+      !zipcode
+    ) {
+      alert("수정한 내용이 없습니다.");
+      return;
+    }
+
     if (!pw) {
       alert("비밀번호를 입력해주세요.");
       return;
@@ -123,16 +146,54 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const updateBoardInput: IUpdateBoardInput = {};
     if (writer) updateBoardInput.title = writer;
     if (content) updateBoardInput.contents = content;
+    if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
+    if (zipcode || address || addressDetail) {
+      updateBoardInput.boardAddress = {};
+      if (zipcode) updateBoardInput.boardAddress.zipcode = zipcode;
+      if (address) updateBoardInput.boardAddress.address = address;
+      if (addressDetail)
+        updateBoardInput.boardAddress.addressDetail = addressDetail;
+    }
 
-    const result = await updateBoard({
-      variables: {
-        updateBoardInput: updateBoardInput,
-        password: pw,
-        boardId: String(router.query.boardId),
-      },
-    });
-    alert("수정");
-    void router.push(`/boards/${result.data?.updateBoard._id ?? ""}`);
+    try {
+      const result = await updateBoard({
+        variables: {
+          updateBoardInput,
+          password: pw,
+          boardId: String(router.query.boardId),
+        },
+      });
+      alert("수정");
+      void router.push(`/boards/${result.data?.updateBoard._id ?? ""}`);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
+  };
+
+  // 주소부분
+  const [isopen, setIsOpen] = useState(false);
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [youtubeUrl, setYoutubeUrl] = useState("");
+
+  const onToggleAddrModal = () => {
+    setIsOpen((prev) => !prev);
+  };
+
+  const onChangeAddressDetail = (e: ChangeEvent<HTMLInputElement>) => {
+    setAddressDetail(e.target.value);
+  };
+
+  const onCompleteAddressSearch = (address: Address) => {
+    setZipcode(address.address);
+    setAddress(address.zonecode);
+    setIsOpen((prev) => !prev);
+  };
+
+  // 유투브
+  const onChangeYoutubeUrl = (e: ChangeEvent<HTMLInputElement>) => {
+    setYoutubeUrl(e.target.value);
   };
 
   return (
@@ -142,15 +203,24 @@ export default function BoardWrite(props: IBoardWriteProps) {
         onChangePw: onChangePw,
         onChangeWriter: onChangeWriter,
         onChangeContent: onChangeContent,
+
         onClickSubmit: onClickSubmit,
         onClickUpdate: onClickUpdate,
+        onToggleAddrModal,
+        onCompleteAddressSearch,
+        onChangeAddressDetail,
+        onChangeYoutubeUrl,
 
+        isopen,
         idError: idError,
         pwError: pwError,
         writerError: writerError,
         contentError: contentError,
 
         success: success,
+        address,
+        zipcode,
+        addressDetail,
 
         isEdit: props.isEdit,
         data: props.data,

@@ -3,95 +3,35 @@ import * as S from "./BoardList.styled";
 import type { IBoardListUIProps } from "./BoardList.types";
 
 export default function BoardListUI(props: IBoardListUIProps) {
+  const BestTitle = [1, 2, 3, 4];
   return (
     <>
       <S.Container>
         <S.Title>베스트 게시글</S.Title>
         <S.ContentBoxWrap>
-          <S.BestListBox>
-            <S.Row1>
-              <S.RowImg src="../../freeboard_img/back.png" />
-            </S.Row1>
-            <S.Row2>
-              <S.TitleName>게시물 제목입니다.</S.TitleName>
-              <S.ContentWrap>
-                <S.ProfileColumn>
-                  <S.ProfileWrap>
-                    <S.ProfileImg src="../../freeboard_img/profile.png" />
-                    <S.ProfileName>노원두</S.ProfileName>
-                  </S.ProfileWrap>
-                  <S.ProfileDate>Date : 2023.02.02</S.ProfileDate>
-                </S.ProfileColumn>
-                <S.LikeWrap>
-                  <S.LikeUp src="../../freeboard_img/up.png" />
-                  <S.LikeCount>356</S.LikeCount>
-                </S.LikeWrap>
-              </S.ContentWrap>
-            </S.Row2>
-          </S.BestListBox>
-          <S.BestListBox>
-            <S.Row1>
-              <S.RowImg src="../../freeboard_img/back.png" />
-            </S.Row1>
-            <S.Row2>
-              <S.TitleName>게시물 제목입니다.</S.TitleName>
-              <S.ContentWrap>
-                <S.ProfileColumn>
-                  <S.ProfileWrap>
-                    <S.ProfileImg src="../../freeboard_img/profile.png" />
-                    <S.ProfileName>노원두</S.ProfileName>
-                  </S.ProfileWrap>
-                  <S.ProfileDate>Date : 2023.02.02</S.ProfileDate>
-                </S.ProfileColumn>
-                <S.LikeWrap>
-                  <S.LikeUp src="../../freeboard_img/up.png" />
-                  <S.LikeCount>356</S.LikeCount>
-                </S.LikeWrap>
-              </S.ContentWrap>
-            </S.Row2>
-          </S.BestListBox>
-          <S.BestListBox>
-            <S.Row1>
-              <S.RowImg src="../../freeboard_img/back.png" />
-            </S.Row1>
-            <S.Row2>
-              <S.TitleName>게시물 제목입니다.</S.TitleName>
-              <S.ContentWrap>
-                <S.ProfileColumn>
-                  <S.ProfileWrap>
-                    <S.ProfileImg src="../../freeboard_img/profile.png" />
-                    <S.ProfileName>노원두</S.ProfileName>
-                  </S.ProfileWrap>
-                  <S.ProfileDate>Date : 2023.02.02</S.ProfileDate>
-                </S.ProfileColumn>
-                <S.LikeWrap>
-                  <S.LikeUp src="../../freeboard_img/up.png" />
-                  <S.LikeCount>356</S.LikeCount>
-                </S.LikeWrap>
-              </S.ContentWrap>
-            </S.Row2>
-          </S.BestListBox>
-          <S.BestListBox>
-            <S.Row1>
-              <S.RowImg src="../../freeboard_img/back.png" />
-            </S.Row1>
-            <S.Row2>
-              <S.TitleName>게시물 제목입니다.</S.TitleName>
-              <S.ContentWrap>
-                <S.ProfileColumn>
-                  <S.ProfileWrap>
-                    <S.ProfileImg src="../../freeboard_img/profile.png" />
-                    <S.ProfileName>노원두</S.ProfileName>
-                  </S.ProfileWrap>
-                  <S.ProfileDate>Date : 2023.02.02</S.ProfileDate>
-                </S.ProfileColumn>
-                <S.LikeWrap>
-                  <S.LikeUp src="../../freeboard_img/up.png" />
-                  <S.LikeCount>356</S.LikeCount>
-                </S.LikeWrap>
-              </S.ContentWrap>
-            </S.Row2>
-          </S.BestListBox>
+          {BestTitle.map((el, index) => (
+            <S.BestListBox key={index}>
+              <S.Row1>
+                <S.RowImg src="../../freeboard_img/back.png" />
+              </S.Row1>
+              <S.Row2>
+                <S.TitleName>게시물 제목입니다.</S.TitleName>
+                <S.ContentWrap>
+                  <S.ProfileColumn>
+                    <S.ProfileWrap>
+                      <S.ProfileImg src="../../freeboard_img/profile.png" />
+                      <S.ProfileName>노원두</S.ProfileName>
+                    </S.ProfileWrap>
+                    <S.ProfileDate>Date : 2023.02.02</S.ProfileDate>
+                  </S.ProfileColumn>
+                  <S.LikeWrap>
+                    <S.LikeUp src="../../freeboard_img/up.png" />
+                    <S.LikeCount>356</S.LikeCount>
+                  </S.LikeWrap>
+                </S.ContentWrap>
+              </S.Row2>
+            </S.BestListBox>
+          ))}
         </S.ContentBoxWrap>
 
         <S.SearchWrap>

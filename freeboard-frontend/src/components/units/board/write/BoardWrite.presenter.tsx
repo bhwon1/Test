@@ -1,5 +1,7 @@
+import { Modal } from "antd";
 import * as S from "./BoardWrite.styled";
 import type { IBoardWriteUIProps } from "./BoardWrite.types";
+import DaumPostcodeEmbed from "react-daum-postcode";
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
   return (
@@ -16,7 +18,7 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
               defaultValue={props.data?.fetchBoard.writer ?? ""}
               readOnly={!!props.data?.fetchBoard.writer}
             />
-            0<S.Error>{props.idError}</S.Error>
+            <S.Error>{props.idError}</S.Error>
           </S.TitleBox>
           <S.TitleBox>
             <S.Title1>비밀번호</S.Title1>
@@ -45,13 +47,51 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.Error>{props.contentError}</S.Error>
         <S.Addr>주소</S.Addr>
         <S.AddrWrap>
-          <S.AddrInputNumber placeholder="07250"></S.AddrInputNumber>
-          <S.AddrButton>우편번호 검색</S.AddrButton>
+          <S.AddrInputNumber
+            placeholder="07250"
+            readOnly
+            value={
+              props.address ||
+              props.data?.fetchBoard.boardAddress?.address ||
+              ""
+            }
+          ></S.AddrInputNumber>
+          <S.AddrButton onClick={props.onToggleAddrModal}>
+            우편번호 검색
+          </S.AddrButton>
+          {props.isopen && (
+            <Modal
+              title="우편번호 검색"
+              open={props.isopen}
+              onOk={props.onToggleAddrModal}
+              onCancel={props.onToggleAddrModal}
+              okText="OK"
+              cancelText="Cancel"
+            >
+              <DaumPostcodeEmbed onComplete={props.onCompleteAddressSearch} />
+            </Modal>
+          )}
         </S.AddrWrap>
-        <S.AddrInput type="text" />
-        <S.AddrInput type="text" />
+        <S.AddrInput
+          type="text"
+          readOnly
+          value={
+            props.zipcode || props.data?.fetchBoard.boardAddress?.zipcode || ""
+          }
+        />
+        <S.AddrInput
+          onChange={props.onChangeAddressDetail}
+          defaultValue={
+            props.data?.fetchBoard.boardAddress?.addressDetail || ""
+          }
+        />
         <S.Title1>유투브</S.Title1>
-        <S.Title1Input type="text" placeholder="링크를 복사해주세요" />
+        <S.Title1Input
+          type="text"
+          placeholder="링크를 복사해주세요"
+          onChange={props.onChangeYoutubeUrl}
+          defaultValue={props.data?.fetchBoard.youtubeUrl || ""}
+        />
         <S.Title1>사진첨부</S.Title1>
         <S.GalleryBox>
           <S.Gallery>+</S.Gallery>

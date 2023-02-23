@@ -1,20 +1,23 @@
-import "../styles/globals.css";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
-import type { AppProps } from "next/app";
+// import "../styles/globals.css";
+// import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"; // API 설정할떄 필요한 것
 // const  {ApolloProvider, ApolloClient, InMemoryCache } = require('@apollo/client') // commonjs 옛날
+import type { AppProps } from "next/app";
+import Layout from "../src/components/commons/layout";
+import ApolloSetting from "../src/components/commons/apollo";
+import "antd/dist/antd";
+import { Global } from "@emotion/react";
+import { globalStyles } from "../src/commons/styles/globalStyles";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const client = new ApolloClient({
-    uri: "http://practice.codebootcamp.co.kr/graphql",
-    cache: new InMemoryCache(), // 나중에 할것
-  });
-
   return (
-    <>
-      <ApolloProvider client={client}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    </>
+    <ApolloSetting>
+      <>
+        <Global styles={globalStyles} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </>
+    </ApolloSetting>
   );
 }
 
