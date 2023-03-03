@@ -43,7 +43,7 @@ export const NameBox = styled.div`
 `;
 
 export const User = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
 `;
 
@@ -77,7 +77,8 @@ export const Contents = styled.div`
 
 export const Title = styled.h1`
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 600;
+  padding: 50px 0;
 `;
 
 export const ContentBox = styled.div`

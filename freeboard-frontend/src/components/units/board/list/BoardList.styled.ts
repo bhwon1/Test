@@ -10,6 +10,7 @@ export const Title = styled.h1`
   font-size: 36px;
   font-family: 700;
   text-align: center;
+  padding: 50px 0;
 `;
 
 export const ContentWrap = styled.div`
@@ -52,7 +53,7 @@ export const Row2 = styled.div`
 
 export const TitleName = styled.h2`
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 600;
   margin: 0;
   padding: 10px 0;
 `;
@@ -162,6 +163,7 @@ export const SearchWrap = styled.div`
 
 export const ListRow1 = styled.div`
   width: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -192,23 +194,23 @@ export const ListDate = styled.h1`
 export const ListNumber2 = styled.h1`
   width: 10%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 `;
 export const ListTitle2 = styled.h1`
   width: 60%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   cursor: pointer;
 `;
 export const ListName2 = styled.h1`
   width: 20%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 `;
 export const ListDate2 = styled.h1`
   width: 10%;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 `;
 
 export const Footer = styled.div`
@@ -228,6 +230,8 @@ export const Button = styled.button`
   justify-content: space-evenly;
   align-items: center;
   border: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
 
   :hover {

@@ -39,7 +39,7 @@ export default function BoardDetail() {
   );
 
   const onClickMoveList = () => {
-    void router.push(`/boards/[]/list`);
+    void router.push(`/boards`);
   };
 
   const onClickDeleteList = async (e: MouseEvent<HTMLButtonElement>) => {
@@ -49,7 +49,7 @@ export default function BoardDetail() {
       },
     });
     alert("내용이 삭제 되었습니다.");
-    void router.push(`http://localhost:3000/boards/[]/list`);
+    void router.push(`/boards`);
   };
 
   const onClickMovetoEdit = () => {

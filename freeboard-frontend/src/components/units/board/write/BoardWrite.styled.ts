@@ -18,7 +18,7 @@ export const TitleBox = styled.div`
 export const Title = styled.h1`
   font-size: 36px;
   text-align: center;
-  padding: 100px 0 10px 0;
+  padding: 100px 0 70px 0;
 `;
 
 export const Title1 = styled.h2`

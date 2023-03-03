@@ -5,7 +5,7 @@ export const Wrap = styled.div`
   width: 100%;
   width: 1200px;
   height: auto;
-  margin: 50px auto;
+  margin: 0 auto;
   box-sizing: border-box;
 `;
 
@@ -19,7 +19,7 @@ export const CommentBox = styled.div`
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
-  padding: 20px 0;
+  padding: 10px 0;
 `;
 export const CommentProfile = styled.img`
   width: 40px;

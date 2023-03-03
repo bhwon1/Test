@@ -17,6 +17,7 @@ export const Seciton2 = styled.div`
 export const CommentWrap = styled.div`
   display: flex;
   align-items: center;
+  padding: 20px 0;
 `;
 
 export const CommnetImg = styled.img`
@@ -88,7 +89,7 @@ export const CommentButton = styled.button`
   margin: 0;
   height: 52px;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
   right: 0;
   box-sizing: border-box;
   cursor: pointer;

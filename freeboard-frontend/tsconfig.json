@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/index.tsx",
-    "pages/_app.tsx"
+    "pages/_app.tsx",
+    "src/components/commons/apollo/index.txs"
   ],
   "exclude": ["node_modules"]
 }
