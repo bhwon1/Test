@@ -169,6 +169,7 @@ export const ListRow1 = styled.div`
   align-items: center;
   text-align: center;
   border-bottom: 1px solid #ddd;
+  overflow: hidden;
 `;
 
 export const ListNumber = styled.h1`
@@ -201,11 +202,17 @@ export const ListTitle2 = styled.h1`
   font-size: 16px;
   font-weight: 400;
   cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const ListName2 = styled.h1`
   width: 20%;
   font-size: 16px;
   font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 export const ListDate2 = styled.h1`
   width: 10%;
@@ -214,6 +221,7 @@ export const ListDate2 = styled.h1`
 `;
 
 export const Footer = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -240,3 +248,8 @@ export const Button = styled.button`
 `;
 
 export const PencilIcon = styled.img``;
+
+export const ButtonList = styled.span`
+  cursor: pointer;
+  margin: 20px;
+`;
