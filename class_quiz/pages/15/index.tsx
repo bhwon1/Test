@@ -42,7 +42,7 @@ export default function InfiniteScrollPage() {
           hasMore={true}
           useWindow={false}
         >
-          {data?.fetchBoards.map((el) => (
+          {data?.fetchBoards.map((el: any) => (
             <div key={el._id}>
               <span style={{ margin: "10px" }}>{el.contents}</span>
               <span style={{ margin: "10px" }}>{el.title}</span>
